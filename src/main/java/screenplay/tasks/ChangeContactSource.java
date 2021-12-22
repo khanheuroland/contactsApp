@@ -5,7 +5,7 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import screenplay.ui.ContactSourceScreen;
-import screenplay.ui.HomeScreen;
+import screenplay.ui.ManageContactScreen;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
@@ -19,7 +19,7 @@ public class ChangeContactSource implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Click.on(HomeScreen.SELECT_CONTACT_SOURCE),
+                Click.on(ManageContactScreen.SELECT_CONTACT_SOURCE),
                 Click.on(ContactSourceScreen.SOURCE_NAME.of(this.source))
         );
     }
