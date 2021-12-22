@@ -46,7 +46,7 @@ public class Tap implements Interaction {
 
         if(this.swipeLeft)
         {
-            touch.longPress(PointOption.point(startX, startY))
+            touch.press(PointOption.point(startX, startY))
                     .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(this.holdSecond)))
                     .moveTo(PointOption.point(0,startY))
                     .release()
@@ -54,7 +54,7 @@ public class Tap implements Interaction {
         }
         else if(this.swipeRight)
         {
-            touch.longPress(PointOption.point(startX, startY))
+            touch.press(PointOption.point(startX, startY))
                     .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(this.holdSecond)))
                     .moveTo(PointOption.point(startX + targetElement.getSize().width/2, startY))
                     .release()
@@ -62,7 +62,7 @@ public class Tap implements Interaction {
         }
         else if(this.swipeUp)
         {
-            touch.longPress(PointOption.point(startX, startY))
+            touch.press(PointOption.point(startX, startY))
                     .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(this.holdSecond)))
                     .moveTo(PointOption.point(startX, 0))
                     .release()
@@ -70,7 +70,7 @@ public class Tap implements Interaction {
         }
         else if(this.swipeDown)
         {
-            touch.longPress(PointOption.point(startX, startY))
+            touch.press(PointOption.point(startX, startY))
                     .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(this.holdSecond)))
                     .moveTo(PointOption.point(startX, startY + targetElement.getSize().height/2))
                     .release()
