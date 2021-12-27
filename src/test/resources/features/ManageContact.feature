@@ -31,3 +31,17 @@ Feature: Manage contact
     And The user attempt to delete this selected contact
     Then The message with header "Delete contact?" and content "This contact will be permanently deleted from your device" will be showed
     And The confirmation button are "Cancel" and "Delete"
+
+  Scenario: The delete confirmation popup show and close for Cancel option
+    Given The home screen displays
+    When The user attempt to select a contact from the list
+    And The user attempt to delete this selected contact
+    And The user decline the delete confirmation
+    Then The confirmation popup will be hidden
+
+  Scenario: The Selected contact will be deleted for Delete option
+    Given The home screen displays
+    When The user attempt to select a contact from the list
+    And The user attempt to delete this selected contact
+    And The user agree with the delete confirmation
+    Then The selected contact will be deleted from contact list

@@ -4,8 +4,9 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.conditions.Check;
-import screenplay.actions.LongPress;
-import screenplay.ui.HomeScreen;
+import net.thucydides.core.annotations.Step;
+import screenplay.actions.Tap;
+import screenplay.ui.ManageContactScreen;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
@@ -23,23 +24,24 @@ public class SelectContactFromList implements Task {
     }
 
     @Override
+    @Step("{0} selects the contact at #{index}")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 Check.whether(this.type == ViewType.INDEX).andIfSo(
-                        LongPress.on(HomeScreen.CONTACT_AT.of(String.valueOf(this.index)))
+                        Tap.on(ManageContactScreen.CONTACT_AT.of(String.valueOf(this.index))).inSecond(2).release()
                 ).otherwise(
-                        LongPress.on(HomeScreen.CONTACT_NAME.of(this.name))
+                        Tap.on(ManageContactScreen.CONTACT_NAME.of(this.name)).inSecond(2).release()
                 )
         );
     }
 
     public static Performable at(int index)
     {
-        return instrumented(ViewContactDetail.class, ViewContactDetail.ViewType.INDEX, index, "");
+        return instrumented(SelectContactFromList.class, ViewType.INDEX, index, "");
     }
 
     public static  Performable byName(String fullname)
     {
-        return instrumented(ViewContactDetail.class, ViewContactDetail.ViewType.NAME, -1, fullname);
+        return instrumented(SelectContactFromList.class, ViewType.NAME, -1, fullname);
     }
 }

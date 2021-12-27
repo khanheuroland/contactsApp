@@ -5,7 +5,7 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.conditions.Check;
-import screenplay.ui.HomeScreen;
+import screenplay.ui.ManageContactScreen;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
@@ -25,9 +25,9 @@ public class ViewContactDetail implements Task {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 Check.whether(this.type == ViewType.INDEX).andIfSo(
-                        Click.on(HomeScreen.CONTACT_AT.of(String.valueOf(this.index)))
+                        Click.on(ManageContactScreen.CONTACT_AT.of(String.valueOf(this.index)))
                 ).otherwise(
-                        Click.on(HomeScreen.CONTACT_NAME.of(this.name))
+                        Click.on(ManageContactScreen.CONTACT_NAME.of(this.name))
                 )
         );
     }

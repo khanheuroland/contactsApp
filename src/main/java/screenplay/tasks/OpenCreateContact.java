@@ -6,7 +6,7 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.thucydides.core.annotations.Step;
 import screenplay.ui.ContactSourceScreen;
-import screenplay.ui.HomeScreen;
+import screenplay.ui.ManageContactScreen;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
@@ -21,7 +21,7 @@ public class OpenCreateContact implements Task {
     @Step("{0} Open the create contact screen on #source source")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Click.on(HomeScreen.ADD_CONTACT),
+                Click.on(ManageContactScreen.ADD_CONTACT),
                 Click.on(ContactSourceScreen.SOURCE_NAME.of(this.source))
         );
     }
